@@ -9,7 +9,7 @@ import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 import Breadcrumb from "@components/Breadcrumb";
 import BreadcrumbItem from "@components/BreadcrumbItem";
-import { TBreadcrumb, TItemListElement } from "types";
+import { TBreadcrumb } from "types";
 // import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({
