@@ -218,28 +218,28 @@ const Index = () => {
             </div>
           </form>
         </div>
-        <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">
-        <p className="lead">#NoMoreStruggle - Tired of overthinking your Instagram profile or ig profile? Let our AI <Link href="/tools/bio-generator/instagram">Instagram Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
-        <p>You don't need to spend your time manually writing a bio for your Instagram space or profile any longer. Create a concise, eye-catching bio with our AI-powered bio generator tool for Instagram and make a great first impression.</p>
-        <hr />
-        <h2>What is a Instagram Bio</h2>
-        <p>A Instagram bio: what are they? In Instagram , your bio is a brief description of yourself or your business located underneath your username.</p>
-        <p>Instagram allows you to include a short description, contact information, emojis, and more in your profile or page bio.</p>
-        <h3>Instagram Bio Checklist</h3>
-        <p>Make sure your profile is totally on point! Follow this checklist to optimize your Instagram bio and enhance your online presence:</p>
-        <ul>
-          <li>Show your personality.</li>
-          <li>Explain who you are and what you do.</li>
-          <li>Target your niche audience with specific keywords.</li>
-          <li>Share Your Contact Information.</li>
-          <li>Add a Call to Action.</li>
-        </ul>
-        <p>Our tool uses a robust bio writing checklist for various social media platfrom to maximize visibility and make your profile stands out from the rest.</p>
-        <h3>We still need to think about stacked headings though.</h3>
-        <p>Phew, with any luck we have styled the headings above this text and they look pretty good.</p>
-        <p>Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.</p>
-        <p>What I've written here is probably long enough, but adding this final sentence can't hurt.</p>
-      </div>
+        <div className="prose max-w-none pt-10 pb-8 dark:prose-dark prose-lg">
+          <p className="lead">#NoMoreStruggle - Tired of overthinking your Instagram profile or ig profile? Let our AI <Link href="/tools/bio-generator/instagram">Instagram Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
+          <p>You don't need to spend your time manually writing a bio for your Instagram space or profile any longer. Create a concise, eye-catching bio with our AI-powered bio generator tool for Instagram and make a great first impression.</p>
+          <hr />
+          <h2>What is a Instagram Bio</h2>
+          <p>A Instagram bio: what are they? In Instagram , your bio is a brief description of yourself or your business located underneath your username.</p>
+          <p>Instagram allows you to include a short description, contact information, emojis, and more in your profile or page bio.</p>
+          <h3>Instagram Bio Checklist</h3>
+          <p>Make sure your profile is totally on point! Follow this checklist to optimize your Instagram bio and enhance your online presence:</p>
+          <ul>
+            <li>Show your personality.</li>
+            <li>Explain who you are and what you do.</li>
+            <li>Target your niche audience with specific keywords.</li>
+            <li>Share Your Contact Information.</li>
+            <li>Add a Call to Action.</li>
+          </ul>
+          <p>Our tool uses a robust bio writing checklist for various social media platfrom to maximize visibility and make your profile stands out from the rest.</p>
+          <h3>We still need to think about stacked headings though.</h3>
+          <p>Phew, with any luck we have styled the headings above this text and they look pretty good.</p>
+          <p>Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.</p>
+          <p>What I've written here is probably long enough, but adding this final sentence can't hurt.</p>
+        </div>
       </div>
     </>
   );

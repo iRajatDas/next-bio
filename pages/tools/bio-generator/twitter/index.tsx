@@ -220,7 +220,7 @@ const Index = () => {
             </div>
           </form>
         </div>
-        <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">
+        <div className="prose max-w-none pt-10 pb-8 dark:prose-dark prose-lg">
           <p className="lead">#NoMoreStruggle - Tired of overthinking your Twitter profile? Let our AI <Link href="/tools/bio-generator/twitter">Twitter Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
           <p>You don't need to spend your time manually writing a bio for your Twitter profile any longer. Create a concise, eye-catching bio with our AI-powered bio generator tool for Twitter and make a great first impression.</p>
           <hr />
