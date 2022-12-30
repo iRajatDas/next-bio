@@ -2,6 +2,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 const forms = require('@tailwindcss/forms')
 const type = require('@tailwindcss/typography')
 const prettier = require('prettier-plugin-tailwindcss')
+const scrollbar = require('tailwind-scrollbar')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -23,6 +24,7 @@ module.exports = {
   plugins: [
     forms,
     type,
-    prettier
+    prettier,
+    scrollbar
   ],
 }
