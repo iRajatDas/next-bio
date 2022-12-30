@@ -5,7 +5,7 @@ import { Inter } from "@next/font/google";
 import { ThemeProvider } from "next-themes";
 import Layout from "@components/layout";
 import SEO from '../next-seo.config';
-import { BreadcrumbJsonLd, DefaultSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 import Breadcrumb from "@components/Breadcrumb";
 import BreadcrumbItem from "@components/BreadcrumbItem";
