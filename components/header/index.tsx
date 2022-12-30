@@ -124,6 +124,7 @@ const Index = () => {
                 <div className="px-12 py-4" key={index}>
                   <Link
                     href={menuItem.destPath}
+                    onClick={handleMenuToggle}
                     className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
                     {menuItem.title}
                   </Link>
