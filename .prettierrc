@@ -1,0 +1,17 @@
+[
+    {
+        "attributeGroups": [
+            "^class$",
+            "^(id|name)$",
+            "$DEFAULT",
+            "^aria-"
+        ]
+    },
+    {
+        "attributeGroups": [
+            "$DEFAULT",
+            "^data-"
+        ],
+        "attributeSort": "ASC"
+    }
+]
