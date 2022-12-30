@@ -115,7 +115,7 @@ const Index = () => {
         description="Adopt the perfect Facebook bio for your profile with this AI-powered Facebook bio generator! Enhance your presence on the platform today with a few simple clicks."
       />
 
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Facebook Bio Generator
@@ -219,8 +219,8 @@ const Index = () => {
           </form>
         </div>
       </div>
-      <div className="prose prose-slate min-w-full mt-8 lg:prose-lg dark:prose-invert">
-        <p className="lead">#NoMoreStruggle -Tired of overthinking your Facebook profile and pages? Let our AI <Link href="/tools/bio-generator/facebook" className="text-black dark:text-inherit">Facebook Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
+      <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">
+        <p className="lead">#NoMoreStruggle - Tired of overthinking your Facebook profile and pages? Let our AI <Link href="/tools/bio-generator/facebook">Facebook Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
         <p>You don't need to spend your time manually writing a bio for your Facebook profile or pages any longer. Create a concise, eye-catching bio with our AI-powered bio generator tool for Facebook and make a great first impression.</p>
         <hr />
         <h2>What is a Facebook Bio</h2>
