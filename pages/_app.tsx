@@ -40,9 +40,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   }, [router.asPath]);
 
-  console.log(isHomeRoute);
-  
-
   return (
     <ThemeProvider enableSystem={true} attribute="class">
       <Layout className={`${inter.variable} font-sans`}>
