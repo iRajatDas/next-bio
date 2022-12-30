@@ -19,6 +19,7 @@ const inter = Inter({
 export default function MyApp({ Component, pageProps }: AppProps) {
 
   const router = useRouter();
+  const isHomeRoute = router.asPath === "/" ? true : false;
   const [breadcrumbs, setBreadcrumbs] = useState<TBreadcrumb>();
 
   useEffect(() => {
@@ -32,18 +33,21 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       const href = "/" + pathArray.slice(0, index + 1).join("/");
       return {
         href,
-        label: (path.charAt(0).toUpperCase() + path.slice(1)).replaceAll('-',' '),
+        label: (path.charAt(0).toUpperCase() + path.slice(1)).replaceAll('-', ' '),
       };
     });
     setBreadcrumbs(breadcrumbs);
-    
+
   }, [router.asPath]);
+
+  console.log(isHomeRoute);
+  
 
   return (
     <ThemeProvider enableSystem={true} attribute="class">
       <Layout className={`${inter.variable} font-sans`}>
         <>
-          <Breadcrumb>
+          {!isHomeRoute && <Breadcrumb>
             <BreadcrumbItem href="/">Home</BreadcrumbItem>
             {breadcrumbs &&
               breadcrumbs.map((breadcrumb) => (
@@ -51,7 +55,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                   {breadcrumb.label}
                 </BreadcrumbItem>
               ))}
-          </Breadcrumb>
+          </Breadcrumb>}
         </>
         <Component {...pageProps} />
         <DefaultSeo {...SEO} />

@@ -17,7 +17,7 @@ const Breadcrumb = ({ children }: any) => {
     });
 
     return (
-        <nav className="py-2 px-4 border-t border-b border-gray-100 dark:border-gray-700 overflow-x-scroll md:overflow-x-hidden">
+        <nav className="overflow-x-scroll md:overflow-x-hidden scrollbar-none">
             <ol className="flex items-center space-x-4">{childrenWtihSeperator}</ol>
         </nav>
     );
