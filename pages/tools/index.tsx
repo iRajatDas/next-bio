@@ -21,7 +21,7 @@ const Index = () => {
       </div>
       <section>
         <h2 className='text-2xl font-extrabold leading-7 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-8 md:text-4xl md:leading-12'>Bio Generators</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-6 gap-4">
+        <ul className="grid grid-cols-1 md:grid-cols-2 py-6 gap-4">
           <Card
             toolPath="/tools/bio-generator/twitter"
             toolName="Twitter Bio"

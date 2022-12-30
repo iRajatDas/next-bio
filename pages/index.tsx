@@ -21,7 +21,7 @@ const Home: NextPage = () => {
             platforms.
           </p>
         </div>
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-0 gap-4">
+        <ul className="grid grid-cols-1 md:grid-cols-2 py-0 gap-4">
           <Card
             toolPath="/tools/bio-generator/twitter"
             toolName="Twitter Bio"
