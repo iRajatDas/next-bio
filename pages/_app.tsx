@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import Breadcrumb from "@components/Breadcrumb";
 import BreadcrumbItem from "@components/BreadcrumbItem";
 import { TBreadcrumb } from "types";
+import Head from "next/head";
 // import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({
@@ -42,6 +43,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider enableSystem={true} attribute="class">
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
       <Layout className={`${inter.variable} font-sans`}>
         <>
           {!isHomeRoute && <Breadcrumb>
