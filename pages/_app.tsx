@@ -11,7 +11,7 @@ import Breadcrumb from "@components/Breadcrumb";
 import BreadcrumbItem from "@components/BreadcrumbItem";
 import { TBreadcrumb } from "types";
 import Head from "next/head";
-// import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,6 +60,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         </>
         <Component {...pageProps} />
         <DefaultSeo {...SEO} />
+        <Analytics mode={'production'} />
       </Layout>
     </ThemeProvider>
   );
