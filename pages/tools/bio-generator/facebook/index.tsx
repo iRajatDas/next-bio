@@ -2,46 +2,10 @@ import React, { useRef, useState } from "react";
 import BioCard from "@components/BioCard";
 import { BioData } from "types";
 import { isEmptyString, capitalizeFirstLetter, request } from "utils/Utils";
+import { defaultFormData, emotionList, profileTypeList } from "utils/Constant";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-
-
-const profileTypeList = [
-  { name: "profile", entity: "person" },
-  { name: "business", entity: "business" },
-];
-
-const emotionList = [
-  { name: "None" },
-  { name: "informative" },
-  { name: "fun" },
-  { name: "angry" },
-  { name: "happy" },
-  { name: "funny" },
-  { name: "hungry" },
-  { name: "love" },
-  { name: "loving" },
-  { name: "convincing" },
-  { name: "convince" },
-  { name: "cool" },
-  { name: "controversial" },
-  { name: "serious" },
-  { name: "sad" },
-  { name: "cry" },
-  { name: "curious" },
-  { name: "cute" },
-  { name: "ecstatic" },
-];
-
-const defaultFormData = {
-  prompt: "",
-  length: "short",
-  tone: "",
-  type: "",
-  hashtags: "0",
-  entity: "person",
-};
-
+import BioCardSkeleton from "@components/BioCardSkeleton";
 
 const Index = () => {
   const promptRef = useRef<HTMLInputElement>(null);
@@ -49,7 +13,6 @@ const Index = () => {
   const [error, setError] = useState(false);
   const [formData, setFormData] = useState(defaultFormData)
   const { prompt, tone, entity } = formData;
-
   const [bioList, setBioList] = useState<BioData | null>(null)
 
   const onPromptInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +61,7 @@ const Index = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    bioList?.data.splice(0)
     if (isEmptyString((promptRef.current as HTMLInputElement).value)) {
       setError(true)
       return
@@ -209,9 +172,15 @@ const Index = () => {
                     }
                   </button>
                 </div>
-                <div className="generation__bio--list md:col-span-4 space-y-4 py-6">
+                <div className={`generation__bio--list md:col-span-4 space-y-4 ${(bioList || loading) && "py-6"}`}>
                   <div className="result space-y-4">
                     {bioList?.data.map((item, index) => <BioCard key={index} text={item.text} />)}
+                    {loading && <>
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                    </>}
                   </div>
                 </div>
               </div>

@@ -2,46 +2,10 @@ import React, { useRef, useState } from "react";
 import BioCard from "@components/BioCard";
 import { BioData } from "types";
 import { isEmptyString, capitalizeFirstLetter, request } from "utils/Utils";
+import { defaultFormData, emotionList, profileTypeList } from "utils/Constant";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-
-
-const profileTypeList = [
-  { name: "profile", entity: "person" },
-  { name: "business", entity: "business" },
-];
-
-const emotionList = [
-  { name: "None" },
-  { name: "informative" },
-  { name: "fun" },
-  { name: "angry" },
-  { name: "happy" },
-  { name: "funny" },
-  { name: "hungry" },
-  { name: "love" },
-  { name: "loving" },
-  { name: "convincing" },
-  { name: "convince" },
-  { name: "cool" },
-  { name: "controversial" },
-  { name: "serious" },
-  { name: "sad" },
-  { name: "cry" },
-  { name: "curious" },
-  { name: "cute" },
-  { name: "ecstatic" },
-];
-
-const defaultFormData = {
-  prompt: "",
-  length: "short",
-  tone: "",
-  type: "",
-  hashtags: "0",
-  entity: "person",
-};
-
+import BioCardSkeleton from "@components/BioCardSkeleton";
 
 const Index = () => {
   const promptRef = useRef<HTMLInputElement>(null);
@@ -49,7 +13,6 @@ const Index = () => {
   const [error, setError] = useState(false);
   const [formData, setFormData] = useState(defaultFormData)
   const { prompt, tone, entity } = formData;
-
   const [bioList, setBioList] = useState<BioData | null>(null)
 
   const onPromptInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +61,7 @@ const Index = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    bioList?.data.splice(0)
     if (isEmptyString((promptRef.current as HTMLInputElement).value)) {
       setError(true)
       return
@@ -121,14 +84,12 @@ const Index = () => {
             Twitter Bio Generator
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Unlock the power of AI to create an eye-catching bio for your
-            Twitter profile. Boost twitter game with our AI powered Twitter bio
-            generator tool!
+            With just a few clicks, you'll create the perfect bio to make your profile stand out. Take control of your online presence with this easy-to-use Twitter bio generator tool!
           </p>
         </div>
 
         {/* Creator */}
-        <div className="">
+        <div className="py-0">
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="w-full">
               {/* Text BOX */}
@@ -211,37 +172,43 @@ const Index = () => {
                     }
                   </button>
                 </div>
-                <div className="generation__bio--list md:col-span-4 space-y-4 py-6">
+                <div className={`generation__bio--list md:col-span-4 space-y-4 ${(bioList || loading) && "py-6"}`}>
                   <div className="result space-y-4">
                     {bioList?.data.map((item, index) => <BioCard key={index} text={item.text} />)}
+                    {loading && <>
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                    </>}
                   </div>
                 </div>
               </div>
             </div>
           </form>
         </div>
-        <div className="prose max-w-none pt-10 pb-8 dark:prose-dark prose-lg">
-          <p className="lead">#NoMoreStruggle - Tired of overthinking your Twitter profile? Let our AI <Link href="/tools/bio-generator/twitter">Twitter Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
-          <p>You don't need to spend your time manually writing a bio for your Twitter profile any longer. Create a concise, eye-catching bio with our AI-powered bio generator tool for Twitter and make a great first impression.</p>
-          <hr />
-          <h2>What is a Twitter Bio</h2>
-          <p>A Twitter bio: what are they? In Twitter , your bio is a brief description of yourself or your business located underneath your username.</p>
-          <p>Twitter allows you to include a short description, contact information, emojis, and more in your profile or page bio.</p>
-          <h3>Twitter Bio Checklist</h3>
-          <p>Make sure your profile is totally on point! Follow this checklist to optimize your Twitter bio and enhance your online presence:</p>
-          <ul>
-            <li>Show your personality.</li>
-            <li>Explain who you are and what you do.</li>
-            <li>Target your niche audience with specific keywords.</li>
-            <li>Share Your Contact Information.</li>
-            <li>Add a Call to Action.</li>
-          </ul>
-          <p>Our tool uses a robust bio writing checklist for various social media platfrom to maximize visibility and make your profile stands out from the rest.</p>
-          <h3>We still need to think about stacked headings though.</h3>
-          <p>Phew, with any luck we have styled the headings above this text and they look pretty good.</p>
-          <p>Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.</p>
-          <p>What I've written here is probably long enough, but adding this final sentence can't hurt.</p>
-        </div>
+      </div>
+      <div className="prose max-w-none pt-10 pb-8 dark:prose-dark prose-lg">
+        <p className="lead">#NoMoreStruggle - Tired of overthinking your Twitter profile? Let our AI <Link href="/tools/bio-generator/twitter">Twitter Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
+        <p>You don't need to spend your time manually writing a bio for your Twitter profile any longer. Create a concise, eye-catching bio with our AI-powered bio generator tool for Twitter and make a great first impression.</p>
+        <hr />
+        <h2>What is a Twitter Bio</h2>
+        <p>A Twitter bio: what are they? In Twitter , your bio is a brief description of yourself or your business located underneath your username.</p>
+        <p>Twitter allows you to include a short description, contact information, emojis, and more in your profile or page bio.</p>
+        <h3>Twitter Bio Checklist</h3>
+        <p>Make sure your profile is totally on point! Follow this checklist to optimize your Twitter bio and enhance your online presence:</p>
+        <ul>
+          <li>Show your personality.</li>
+          <li>Explain who you are and what you do.</li>
+          <li>Target your niche audience with specific keywords.</li>
+          <li>Share Your Contact Information.</li>
+          <li>Add a Call to Action.</li>
+        </ul>
+        <p>Our tool uses a robust bio writing checklist for various social media platfrom to maximize visibility and make your profile stands out from the rest.</p>
+        <h3>We still need to think about stacked headings though.</h3>
+        <p>Phew, with any luck we have styled the headings above this text and they look pretty good.</p>
+        <p>Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.</p>
+        <p>What I've written here is probably long enough, but adding this final sentence can't hurt.</p>
       </div>
     </>
   );

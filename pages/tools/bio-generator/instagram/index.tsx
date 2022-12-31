@@ -2,46 +2,10 @@ import React, { useRef, useState } from "react";
 import BioCard from "@components/BioCard";
 import { BioData } from "types";
 import { isEmptyString, capitalizeFirstLetter, request } from "utils/Utils";
+import { defaultFormData, emotionList, profileTypeList } from "utils/Constant";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-
-
-const profileTypeList = [
-  { name: "profile", entity: "person" },
-  { name: "business", entity: "business" },
-];
-
-const emotionList = [
-  { name: "None" },
-  { name: "informative" },
-  { name: "fun" },
-  { name: "angry" },
-  { name: "happy" },
-  { name: "funny" },
-  { name: "hungry" },
-  { name: "love" },
-  { name: "loving" },
-  { name: "convincing" },
-  { name: "convince" },
-  { name: "cool" },
-  { name: "controversial" },
-  { name: "serious" },
-  { name: "sad" },
-  { name: "cry" },
-  { name: "curious" },
-  { name: "cute" },
-  { name: "ecstatic" },
-];
-
-const defaultFormData = {
-  prompt: "",
-  length: "short",
-  tone: "",
-  type: "",
-  hashtags: "0",
-  entity: "person",
-};
-
+import BioCardSkeleton from "@components/BioCardSkeleton";
 
 const Index = () => {
   const promptRef = useRef<HTMLInputElement>(null);
@@ -49,7 +13,6 @@ const Index = () => {
   const [error, setError] = useState(false);
   const [formData, setFormData] = useState(defaultFormData)
   const { prompt, tone, entity } = formData;
-
   const [bioList, setBioList] = useState<BioData | null>(null)
 
   const onPromptInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +61,7 @@ const Index = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    bioList?.data.splice(0)
     if (isEmptyString((promptRef.current as HTMLInputElement).value)) {
       setError(true)
       return
@@ -121,12 +84,12 @@ const Index = () => {
             Instagram Bio Generator
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            With just a few clicks, you'll create the perfect bio to make your profile stand out. Take control of your online presence with this easy-to-use instagram bio generator tool!
+            With just a few clicks, you'll create the perfect bio to make your profile stand out. Take control of your online presence with this easy-to-use Instagram bio generator tool!
           </p>
         </div>
 
         {/* Creator */}
-        <div className="">
+        <div className="py-0">
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="w-full">
               {/* Text BOX */}
@@ -209,16 +172,23 @@ const Index = () => {
                     }
                   </button>
                 </div>
-                <div className="generation__bio--list md:col-span-4 space-y-4 py-6">
+                <div className={`generation__bio--list md:col-span-4 space-y-4 ${(bioList || loading) && "py-6"}`}>
                   <div className="result space-y-4">
                     {bioList?.data.map((item, index) => <BioCard key={index} text={item.text} />)}
+                    {loading && <>
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                      <BioCardSkeleton />
+                    </>}
                   </div>
                 </div>
               </div>
             </div>
           </form>
         </div>
-        <div className="prose max-w-none pt-10 pb-8 dark:prose-dark prose-lg">
+      </div>
+      <div className="prose max-w-none pt-10 pb-8 dark:prose-dark prose-lg">
           <p className="lead">#NoMoreStruggle - Tired of overthinking your Instagram profile or ig profile? Let our AI <Link href="/tools/bio-generator/instagram">Instagram Bio Generator</Link> do the heavy lifting with creative and cool bio options with relavant hashtags.</p>
           <p>You don't need to spend your time manually writing a bio for your Instagram space or profile any longer. Create a concise, eye-catching bio with our AI-powered bio generator tool for Instagram and make a great first impression.</p>
           <hr />
@@ -240,7 +210,6 @@ const Index = () => {
           <p>Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.</p>
           <p>What I've written here is probably long enough, but adding this final sentence can't hurt.</p>
         </div>
-      </div>
     </>
   );
 };
