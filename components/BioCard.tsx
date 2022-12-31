@@ -13,10 +13,10 @@ const BioCard = ({ text }: Bio) => {
         ? window.location.origin
         : '';
     const [isCopied, setCopied] = useState(false)
-    const shareText = `${text}\n Created with: ${origin}`
+    const shareText = `${text}\nCreated with: ${origin}`
 
     const copyToClipboard = async (str: string) => {
-        const copyableStr = `${str.trim()}\n Created with: ${origin}`;
+        const copyableStr = `${str.trim()}\nCreated with: ${origin}`;
         if ('clipboard' in navigator) {
             await navigator.clipboard
                 .writeText(copyableStr)
