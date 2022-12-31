@@ -2,7 +2,7 @@ import React from 'react'
 
 const BioCardSkeleton = () => {
     return (
-        <div role="status" className="animate-pulse border dark:border-gray-700 md:px-4 md:py-6 rounded-xl pointer-events-none">
+        <div role="status" className="animate-pulse border dark:border-gray-700 px-4 py-6 rounded-xl pointer-events-none">
             <div className="flex flex-row items-center gap-4">
                 <div className="left flex-1 justify-start items-center">
                     <div className="h-2 md:h-3 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
