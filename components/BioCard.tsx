@@ -8,12 +8,15 @@ type Bio = {
 }
 
 const BioCard = ({ text }: Bio) => {
-
+    const origin = typeof window !== 'undefined'
+        && window.location.origin
+        ? window.location.origin
+        : '';
     const [isCopied, setCopied] = useState(false)
-    const shareText = `${text}\n Created with: ${window.location.hostname}`;
+    const shareText = `${text}\n Created with: ${origin}`
 
     const copyToClipboard = async (str: string) => {
-        const copyableStr = `${str.trim()}\n Created with: ${window.location.hostname}`;
+        const copyableStr = `${str.trim()}\n Created with: ${origin}`;
         if ('clipboard' in navigator) {
             await navigator.clipboard
                 .writeText(copyableStr)
