@@ -46,7 +46,7 @@ const Contact = () => {
                   <p>
                     Facebook:{" "}
                     <Link href="https://facebook.com/rjatds">
-                      draj123258[at]gmail[dot]com
+                      facebook.com/rjatds
                     </Link>
                   </p>
                 </blockquote>
@@ -54,10 +54,7 @@ const Contact = () => {
                   For those who are concerned about there privacy on our site:
                 </p>
                 <p>
-                  Read here:{" "}
-                  <Link href="/privacy">
-                    Privacy Policy
-                  </Link>
+                  Read here: <Link href="/privacy">Privacy Policy</Link>
                 </p>
               </div>
             </div>
