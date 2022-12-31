@@ -50,6 +50,15 @@ const Contact = () => {
                     </Link>
                   </p>
                 </blockquote>
+                <p>
+                  For those who are concerned about there privacy on our site:
+                </p>
+                <p>
+                  Read here:{" "}
+                  <Link href="/privacy">
+                    Privacy Policy
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
